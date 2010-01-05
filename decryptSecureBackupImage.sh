@@ -62,7 +62,11 @@ then
 fi
 
 # decrypt the image
-hdiutil convert -format UDSB -o "${DESTINATION}" "$QUIET_ARG" "${SOURCE}" 
+hdiutil convert -format UDSB -o "${DESTINATION}"  "${SOURCE}"
+
+# if the above fails, try with this:
+# hdiutil convert "${SOURCE}" -format UDSB -o "${DESTINATION}"
+
 
 # Copy over the ID of the compuer whose backup is being copied source (new with Snow Leaopard)
 cp -p "${SOURCE}/${TIME_MACHINE_2_HOST_PLIST}" "${DESTINATION}"/
